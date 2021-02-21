@@ -164,7 +164,7 @@
         		<inherited>true</inherited>
         		<configuration>
             		<hostname>localhost</hostname>
-            		<port>9999</port>
+            		<port>9990</port>
             		<username>vindamelio</username>
             		<password>dA$13579</password>
             		<timeout>30000</timeout>
