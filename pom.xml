@@ -149,6 +149,7 @@
 		</profile>
 	</profiles>
 	<build>
+		<finalName>myuse</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
