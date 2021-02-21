@@ -23,19 +23,22 @@ import org.springframework.jms.listener.SimpleMessageListenerContainer;
 public class JmsConfig {
 
     //@Value("${activemq.broker-url}")
-    private String brokerUrl = "tcp://localhost:61616";
-
+	//private String brokerUrl = "tcp://localhost:61616";
+    private String brokerUrl = "tcp://localhost:5445";
+    
     //@Value("${activemq.broker-user}")
-    private String brokerUser = "admin";
-
+    //private String brokerUser = "admin";
+    private String brokerUser = "vindamelio";
+    
     //@Value("${activemq.broker-pssw}")
-    private String brokerPssw = "admin";
-
+    //private String brokerPssw = "admin";
+    private String brokerPssw = "dA$13579";
+    
     //@Value("${destination.first}")
-    private String firstDestination = "prima-destinazione";
+    private String firstDestination = "primaDestinazione";
 
 	
-	//@Bean
+    //@Bean
 	public ActiveMQConnectionFactory firstConnectionFactory(){
         ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory();
         try{
@@ -80,7 +83,7 @@ public class JmsConfig {
     }
     
 
-    //@Bean
+	//@Bean
     public SimpleJmsListenerContainerFactory firstSimpleJmsListenerContainerFactory() {
       SimpleJmsListenerContainerFactory factory = new SimpleJmsListenerContainerFactory();
       factory.setConnectionFactory(firstConnectionFactory());
@@ -106,7 +109,7 @@ public class JmsConfig {
       return firstSimpleJmsListenerContainerFactory().createListenerContainer(endpoint);
     }
 
-    @Bean
+    //@Bean
     public JmsListenerContainerFactory<?> firstJmsListenerContainerFactory(
         ConnectionFactory connectionFactory,
         DefaultJmsListenerContainerFactoryConfigurer configurer

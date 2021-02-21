@@ -22,15 +22,16 @@ public class FirstListener {
 	private SettaStringa settaStringa;
 
 	//@Value("${destination.first}")
-	private String firstDestination = "prima-destinazione";
+	private String firstDestination = "primaDestinazione";
 
 	private Integer count = 0;
 	
-
-	@JmsListener(destination = "prima-destinazione", containerFactory = "firstJmsListenerContainerFactory")
+	
+	//@JmsListener(destination = "primaDestinazione", containerFactory = "firstJmsListenerContainerFactory")
+	//@JmsListener(destination = "primaDestinazione", containerFactory = "firstSimpleJmsListenerContainerFactory")
 	public void receiveMessage(final Message jsonMessage) throws JMSException {
 		String messageData = null;
-		//System.out.println("FirstListener Received message " + jsonMessage);
+		//System.out.println("FirstLi//stener Received message " + jsonMessage);
 		
 		if(jsonMessage instanceof TextMessage) {
 			TextMessage textMessage = (TextMessage)jsonMessage;
