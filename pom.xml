@@ -160,7 +160,15 @@
 			<plugin>
       			<groupId>org.jboss.as.plugins</groupId>
       			<artifactId>jboss-as-maven-plugin</artifactId>
-      			<version>7.4.Final</version>
+      			<version>7.9.Final</version>
+        		<inherited>true</inherited>
+        		<configuration>
+            		<hostname>localhost</hostname>
+            		<port>9999</port>
+            		<username>vindamelio</username>
+            		<password>dA$13579</password>
+            		<timeout>30000</timeout>
+        		</configuration>
     		</plugin>
 		</plugins>
 	</build>
