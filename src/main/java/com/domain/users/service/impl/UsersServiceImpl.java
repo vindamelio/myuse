@@ -72,7 +72,7 @@ public class UsersServiceImpl implements UsersService{
 		UserDTO resDTO = userMapper.entityToUserDTO(res);
 
 		String message = "sending user saved id:" + res.getId();
-		jmsTemplate.convertAndSend(firstDestination, message);
+		//jmsTemplate.convertAndSend(firstDestination, message);
 
 		return resDTO;
 		
