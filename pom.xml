@@ -159,7 +159,7 @@
 			<!-- Generatore delle api -->
 			
 			<plugin>
-      			<groupId>org.jboss.as.plugins</groupId>
+      			<groupId>org.jboss.as.plugins</groupId> 
       			<artifactId>jboss-as-maven-plugin</artifactId>
       			<version>7.9.Final</version>
         		<inherited>true</inherited>
