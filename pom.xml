@@ -173,5 +173,14 @@
     		</plugin>
 		</plugins>
 	</build>
-
+	<distributionManagement>
+		<snapshotRepository>
+			<id>dapp-snapshots</id>
+			<url>http://localhost:9092/repository/my-maven-hosted-snapshot/</url>
+		</snapshotRepository>
+		<repository>
+			<id>dapp-releases</id>
+			<url>http://localhost:9092/repository/my-maven-hosted-release/</url>
+		</repository>
+	</distributionManagement>
 </project>
