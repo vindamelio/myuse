@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="row">
+        <nav>
+            <p>
+              <a routerLink="/home" routerLinkActive="active"> Link verso Home</a>
+            </p>
+        </nav>          
+    </div>
+    <div  class="row">
+        <button type="button" class="ml-3"  (click)="printHome()">Console</button>
+    </div>
+
+    <div class="row">
+        <app-add-edit [parentUsera]="user"   (childUsera)="messageFromUsera=$event"   ></app-add-edit>
+        <h1>{{messageFromUsera}}</h1>
+    </div>
+
+
+    <div class="row">
+        <app-lista [parentLista]="userList"  (childLista)="messageFromLista=$event" ></app-lista>
+        <h1>{{messageFromLista}}</h1>
+    </div>
+
+</div>

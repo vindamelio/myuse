@@ -15,7 +15,7 @@ export class UserProviderService {
 
   constructor(private http:HttpClient) {}
   //private _url:string="http://localhost:3000/people"
-  private _url:string="http://localhost:8080/myuse/api/users";
+  private _url:string="http://localhost:8082/myuse/api/users";
 
   public getUsers():Observable<User[]>{
     return this.http.get<User[]>(this._url+"/all", httpOptions).pipe(catchError(this.errorHandler));

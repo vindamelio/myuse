@@ -12,8 +12,8 @@ import { from, of, Observable } from 'rxjs';
 })
 export class AddEditComponent implements OnInit {
   
-  @Input('parentUser') public importedUser:User = new User("","");
-  @Output() public childUser = new EventEmitter();
+  @Input('parentUsera') public importedUser:User = new User("","");
+  @Output() public childUsera = new EventEmitter();
 
   public formModel:User=new User("","");
 
@@ -84,7 +84,7 @@ export class AddEditComponent implements OnInit {
 
   
   public fireChildUser(){
-    this.childUser.emit("User " + this.importedUser.account + " Saluta");
+    this.childUsera.emit("User " + this.importedUser.account + " Saluta");
   }
 
   public sendData(){

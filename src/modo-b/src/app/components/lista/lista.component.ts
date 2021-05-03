@@ -8,8 +8,8 @@ import { User } from '../../models/user';
 })
 export class ListaComponent implements OnInit {
 
-  @Input('parentList') public importedUserList:User[]=[];
-  @Output() public childList = new EventEmitter();
+  @Input('parentLista') public importedUserLista:User[]=[];
+  @Output() public childLista = new EventEmitter();
 
   public error: string = "";
   constructor(
@@ -17,15 +17,15 @@ export class ListaComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    localStorage.setItem("importedUserList",JSON.stringify(this.importedUserList));
+    localStorage.setItem("importedUserList",JSON.stringify(this.importedUserLista));
   }
 
   public fireChildList(){
-    this.childList.emit("List Saluta");
+    this.childLista.emit("Lista Saluta");
   }
 
   public navigate(id:number){
-    this.router.navigate(["/home", id]);
+    this.router.navigate(["/adda", id]);
   }
 
 }

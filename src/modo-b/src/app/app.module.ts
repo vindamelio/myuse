@@ -20,6 +20,10 @@ import { UserProviderService } from './services/user-provider.service';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { ListaComponent } from './components/lista/lista.component';
+import { ListbComponent } from './components/listb/listb.component';
+import { ListcComponent } from './components/listc/listc.component';
+import { ListdComponent } from './components/listd/listd.component';
+import { ListeComponent } from './components/liste/liste.component';
 import { AddEditComponent } from './components/add-edit/add-edit.component';
 import { AddEditbComponent } from './components/add-editb/add-editb.component';
 import { AddEditcComponent } from './components/add-editc/add-editc.component';
@@ -27,14 +31,17 @@ import { AddEditdComponent } from './components/add-editd/add-editd.component';
 import { AddEditeComponent } from './components/add-edite/add-edite.component';
 import { ErrorComponent } from './components/error/error.component';
 import { ProvaComponent } from './components/prova/prova.component';
-import { ListbComponent } from './components/listb/listb.component';
+import { AddaComponent } from './components/adda/adda.component';
+import { AddbComponent } from './components/addb/addb.component';
+import { AddcComponent } from './components/addc/addc.component';
+import { AdddComponent } from './components/addd/addd.component';
+import { AddeComponent } from './components/adde/adde.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ListaComponent,
     AddEditComponent,
     ErrorComponent,
     ProvaComponent,
@@ -42,7 +49,16 @@ import { ListbComponent } from './components/listb/listb.component';
     AddEditcComponent,
     AddEditdComponent,
     AddEditeComponent,
-    ListbComponent
+    ListaComponent,
+    ListbComponent,
+    ListcComponent,
+    ListdComponent,
+    ListeComponent,
+    AddaComponent,
+    AddbComponent,
+    AddcComponent,
+    AdddComponent,
+    AddeComponent
   ],
   imports: [
     BrowserAnimationsModule,

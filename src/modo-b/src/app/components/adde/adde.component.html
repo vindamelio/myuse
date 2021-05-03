@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="row">
+        <nav>
+            <p>
+              <a routerLink="/home" routerLinkActive="active"> Link verso Home</a>
+            </p>
+        </nav>          
+    </div>
+    <div  class="row">
+        <button type="button" class="ml-3"  (click)="printHome()">Console</button>
+    </div>
+
+    <div class="row">
+        <app-add-edite [parentUsere]="user"   (childUsere)="messageFromUsere=$event"   ></app-add-edite>
+        <h1>{{messageFromUsere}}</h1>
+    </div>
+
+    <div class="row">
+        <app-liste [parentListe]="userList"  (childListe)="messageFromListe=$event" ></app-liste>
+        <h1>{{messageFromListe}}</h1>
+    </div>
+
+
+</div>
