@@ -1,5 +1,6 @@
 package com.domain.users.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,7 +14,8 @@ public class CarEntity {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;
+	@Column(name="id", nullable=false)
+	private Integer idCar;
 	
 	private String factory;
 	private String name;
@@ -25,8 +27,8 @@ public class CarEntity {
 	}
 
 	
-	public CarEntity(Integer id, String factory, String name, Integer power, String type) {
-			this.id = id;		
+	public CarEntity(Integer idCar, String factory, String name, Integer power, String type) {
+			this.idCar = idCar;		
 			this.factory = factory;
 			this.name = name;
 			this.power = power;
@@ -34,11 +36,11 @@ public class CarEntity {
 	}
 	
 	
-	public Integer getId() {
-		return id;
+	public Integer getIdCar() {
+		return idCar;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+	public void setIdCar(Integer idCar) {
+		this.idCar = idCar;
 	}
 
 	public String getFactory() {
@@ -71,7 +73,7 @@ public class CarEntity {
 
 	@Override
 	public String toString() {
-		return "CarEntity [id=" + id + ", factory=" + factory + ", name=" + name + ", power=" + power + ", type=" + type + "]";
+		return "CarEntity [idCar=" + idCar + ", factory=" + factory + ", name=" + name + ", power=" + power + ", type=" + type + "]";
 	}
 
 	

@@ -2,7 +2,7 @@ package com.domain.users.service.dto;
 
 public class CarDTO {
 
-	private Integer id;
+	private Integer idCar;
 	private String factory;
 	private String name;
 	private Integer power;
@@ -13,8 +13,8 @@ public class CarDTO {
 	}
 
 	
-	public CarDTO(Integer id, String factory, String name, Integer power, String type) {
-			this.id = id;		
+	public CarDTO(Integer idCar, String factory, String name, Integer power, String type) {
+			this.idCar = idCar;		
 			this.factory = factory;
 			this.name = name;
 			this.power = power;
@@ -22,12 +22,12 @@ public class CarDTO {
 	}
 	
 	
-	public Integer getId() {
-		return id;
+	public Integer getIdCar() {
+		return idCar;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setIdCar(Integer idCar) {
+		this.idCar = idCar;
 	}
 
 	public String getFactory() {
@@ -60,7 +60,7 @@ public class CarDTO {
 
 	@Override
 	public String toString() {
-		return "CarDTO [id=" + id + ", factory=" + factory + ", name=" + name + ", power=" + power + ", type=" + type + "]";
+		return "CarDTO [idCar=" + idCar + ", factory=" + factory + ", name=" + name + ", power=" + power + ", type=" + type + "]";
 	}
 
 	

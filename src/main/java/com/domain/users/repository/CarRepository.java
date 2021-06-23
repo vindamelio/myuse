@@ -9,6 +9,6 @@ import com.domain.users.domain.CarEntity;
 @Repository
 public interface CarRepository extends JpaRepository<CarEntity, Integer>{
 	
-	CarEntity findOneById(Integer id);
+	CarEntity findOneByIdCar(Integer idCar);
 
 }

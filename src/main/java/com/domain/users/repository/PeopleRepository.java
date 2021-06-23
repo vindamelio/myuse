@@ -9,6 +9,6 @@ import com.domain.users.domain.PeopleEntity;
 @Repository
 public interface PeopleRepository extends JpaRepository<PeopleEntity, Integer>{
 	
-	PeopleEntity findOneById(Integer id);
+	PeopleEntity findOneByIdPeople(Integer idPeople);
 
 }

@@ -43,7 +43,7 @@ public class CarsServiceImpl implements CarsService{
 	@Override
 	public CarDTO findOneById(Integer id){
 		
-		CarEntity entity = carRepository.findOneById(id);
+		CarEntity entity = carRepository.findOneByIdCar(id);
 		CarDTO resDTO = carMapper.entityToCarDTO(entity);
 		return resDTO;
 	};
@@ -51,7 +51,7 @@ public class CarsServiceImpl implements CarsService{
 	@Override
 	public CarFullNameDTO getCarFullNameById(Integer id){
 		
-		CarEntity entity = carRepository.findOneById(id);
+		CarEntity entity = carRepository.findOneByIdCar(id);
 		CarFullNameDTO resDTO = carMapper.entityToCarFullNameDTO(entity);
 		return resDTO;
 	};
@@ -61,17 +61,17 @@ public class CarsServiceImpl implements CarsService{
 		
 		CarEntity entity = carMapper.carDTOToCarEntity(dto);
 
-		if(!(entity.getId()>0)){
+		if(!(entity.getIdCar()>0)){
 			List<CarEntity> lista = new ArrayList<CarEntity>();		
 			lista = carRepository.findAll();
 			Integer id = trovaMax(lista) + 1;
-			entity.setId(id);
+			entity.setIdCar(id);
 		}
 
 		CarEntity res = carRepository.save((CarEntity)entity);
 		CarDTO resDTO = carMapper.entityToCarDTO(res);
 
-		String message = "sending car saved id:" + res.getId();
+		String message = "sending car saved id:" + res.getIdCar();
 		jmsTemplate.convertAndSend(firstDestination, message);
 
 		return resDTO;
@@ -89,7 +89,7 @@ public class CarsServiceImpl implements CarsService{
 		Integer max = 0;
 		try{
 			for(CarEntity us:in){
-				Integer id = us.getId();
+				Integer id = us.getIdCar();
 				if(id > max){
 					max = id;
 				}	

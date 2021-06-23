@@ -23,7 +23,7 @@ public class CarMapper {
 		}
 		
 		CarDTO carDTO = new CarDTO();
-		carDTO.setId(entity.getId());
+		carDTO.setIdCar(entity.getIdCar());
 		carDTO.setFactory(entity.getFactory());
 		carDTO.setName(entity.getName());
 		carDTO.setPower(entity.getPower());
@@ -39,7 +39,7 @@ public class CarMapper {
 		}
 		
 		CarEntity carEntity = new CarEntity();
-		carEntity.setId(dto.getId());
+		carEntity.setIdCar(dto.getIdCar());
 		carEntity.setFactory(dto.getFactory());
 		carEntity.setName(dto.getName());
 		carEntity.setPower(dto.getPower());

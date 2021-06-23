@@ -2,7 +2,7 @@ package com.domain.users.service.dto;
 
 public class UserDTO {
 
-	private Integer id;
+	private Integer idUser;
 	
 	private String account;
 	
@@ -14,18 +14,18 @@ public class UserDTO {
 	}
 
 	
-	public UserDTO(Integer id, String account, String mail) {
-			this.id = id;		
+	public UserDTO(Integer idUser, String account, String mail) {
+			this.idUser = idUser;		
 			this.account = account;
 			this.mail = mail;
 	}
 	
 	
-	public Integer getId() {
-		return id;
+	public Integer getIdUser() {
+		return idUser;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+	public void setIdUser(Integer idUser) {
+		this.idUser = idUser;
 	}
 
 	public String getAccount() {
@@ -46,7 +46,7 @@ public class UserDTO {
 
 	@Override
 	public String toString() {
-		return "UserDTO [id=" + id + ", account=" + account + ", mail=" + mail + "]";
+		return "UserDTO [idUser=" + idUser + ", account=" + account + ", mail=" + mail + "]";
 	}
 
 	

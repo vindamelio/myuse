@@ -1,0 +1,28 @@
+<div class="dive">
+  <div>
+    <button type="button" class="ml-3"  (click)="fireChildUser()">UserSend</button>
+    {{ stringe }}
+  </div>
+
+  <div>
+    <div>
+      <!--<form [formGroup]="myForm" (ngSubmit)="onSubmit(myModel)"> -->
+      <!--<form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)"> -->  
+      <form [formGroup]="myForm" (ngSubmit)="onSubmit()"> 
+
+        <formly-form [form]="myForm" [fields]="myFields" [model]="myModel"></formly-form>
+           
+        <button type="submit" class="btn btn-default"  >Submit</button>
+      </form>
+      <!--<button type="button" class="ml-3" [disabled]="!myForm.valid" (click)="sendData2()">Invia</button> -->
+      <button type="button" class="ml-3"  (click)="sendData5()">Invia</button>
+    </div>
+      <button type="button" class="ml-3"  (click)="resetData5()">Reset</button>
+      <button type="button" class="ml-3"  (click)="deleteData()">Delete</button>
+      <button type="button" class="ml-3"  (click)="printUser()">Console</button>
+      <button type="button" class="ml-3"  (click)="updateValue()">Update</button>
+  </div>
+
+
+
+</div>

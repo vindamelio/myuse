@@ -44,7 +44,7 @@ public class UsersServiceImpl implements UsersService{
 	@Override
 	public UserDTO findOneById(Integer id){
 		
-		UserEntity entity = userRepository.findOneById(id);
+		UserEntity entity = userRepository.findOneByIdUser(id);
 		UserDTO resDTO = userMapper.entityToUserDTO(entity);
 		return resDTO;
 	};
@@ -52,7 +52,7 @@ public class UsersServiceImpl implements UsersService{
 	@Override
 	public UserFullNameDTO getUserFullNameById(Integer id){
 		
-		UserEntity entity = userRepository.findOneById(id);
+		UserEntity entity = userRepository.findOneByIdUser(id);
 		UserFullNameDTO resDTO = userMapper.entityToUserFullNameDTO(entity);
 		return resDTO;
 	};
@@ -62,16 +62,16 @@ public class UsersServiceImpl implements UsersService{
 		
 		UserEntity entity = userMapper.userDTOToUserEntity(dto);
 
-		if(!(entity.getId()>0)){
+		if(!(entity.getIdUser()>0)){
 			List<UserEntity> lista = new ArrayList<UserEntity>();		
 			lista = userRepository.findAll();
 			Integer id = trovaMax(lista) + 1;
-			entity.setId(id);
+			entity.setIdUser(id);
 		}
 		UserEntity res = userRepository.save((UserEntity)entity);
 		UserDTO resDTO = userMapper.entityToUserDTO(res);
 
-		String message = "sending user saved id:" + res.getId();
+		String message = "sending user saved id:" + res.getIdUser();
 		//jmsTemplate.convertAndSend(firstDestination, message);
 
 		return resDTO;
@@ -89,7 +89,7 @@ public class UsersServiceImpl implements UsersService{
 		Integer max = 0;
 		try{
 			for(UserEntity us:in){
-				Integer id = us.getId();
+				Integer id = us.getIdUser();
 				if(id > max){
 					max = id;
 				}	

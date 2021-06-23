@@ -15,10 +15,7 @@ export class HomeComponent implements OnInit {
   public userList:User[]=[];
   public error: string = "";
   public title: string = "modo-b";
-  public messageFromUser: string = "";
-  public messageFromUserb: string = "";
-  public messageFromUserc: string = "";
-  public messageFromUserd: string = "";
+  
   public messageFromUsere: string = "";
   public messageFromList: string = "";
 
@@ -52,9 +49,7 @@ export class HomeComponent implements OnInit {
     const jusl=JSON.parse(usl);
     console.log("jus:" + jus);
     console.log("jusl:" + jusl);
-    //console.log("formModel: id:" + this.formModel.id + ", account:" + this.formModel.account + ", mail:" + this.formModel.mail); 
-
-    
+        
   }
 
 }

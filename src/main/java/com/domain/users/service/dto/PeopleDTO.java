@@ -2,7 +2,7 @@ package com.domain.users.service.dto;
 
 public class PeopleDTO {
 
-	private Integer id;
+	private Integer idPeople;
 	
 	private String firstName;
 	
@@ -16,19 +16,19 @@ public class PeopleDTO {
 	}
 
 	
-	public PeopleDTO(Integer id, String firstName, String lastName, Integer age) {
-            this.id = id;        
+	public PeopleDTO(Integer idPeople, String firstName, String lastName, Integer age) {
+            this.idPeople = idPeople;        
 			this.firstName = firstName;
 			this.lastName = lastName;
 			this.age = age;
 	}
 	
 	
-	public Integer getId() {
-		return id;
+	public Integer getIdPeople() {
+		return idPeople;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+	public void setIdPeople(Integer idPeople) {
+		this.idPeople = idPeople;
 	}
 
 	public String getFirstName() {
@@ -58,7 +58,7 @@ public class PeopleDTO {
 
 	@Override
 	public String toString() {
-		return "PeopleDTO [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", age=" + age + "]";
+		return "PeopleDTO [idPeople=" + idPeople + ", firstName=" + firstName + ", lastName=" + lastName + ", age=" + age + "]";
 	}
 
 }

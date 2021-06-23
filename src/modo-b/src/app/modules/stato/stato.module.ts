@@ -85,20 +85,20 @@ export class StatoModule {
     );
   }
 
-  @Action(GetUsers)  
-  getUserss(context: StateContext<UserStatoModel> , { }: GetUsers) {  
-      const state = context.getState();  
-      context.patchState({  
-          users: [...state.users, ]  
-      });  
-      console.log(context.getState());  
-  }  
+  //@Action(GetUsers)  
+  //getUserss(context: StateContext<UserStatoModel> , { }: GetUsers) {  
+  //    const state = context.getState();  
+  //    context.patchState({  
+  //        users: [...state.users, ]  
+  //    });  
+  //    console.log(context.getState());  
+  //}  
 
 
 
   @Action(GetUser)
-  getUserById( { getState, setState, patchState }: StateContext<UserStatoModel>, { id }: GetUser ) {
-    return this.userProviderService.getUser(id).pipe(
+  getUserByIdUser( { getState, setState, patchState }: StateContext<UserStatoModel>, { idUser }: GetUser ) {
+    return this.userProviderService.getUser(idUser).pipe(
       tap(response => {
         const state = getState();
         patchState({
@@ -113,14 +113,14 @@ export class StatoModule {
     );
   }
 
-  @Action(GetUser)  
-  getUserByIdd(context: StateContext<UserStatoModel> , { id}: GetUser) {  
-      const state = context.getState();  
-      context.patchState({  
-          users: [...state.users, ]  
-      });  
-      console.log(context.getState());  
-  }  
+  //@Action(GetUser)  
+  //getUserByIdd(context: StateContext<UserStatoModel> , { idUser}: GetUser) {  
+  //    const state = context.getState();  
+  //    context.patchState({  
+  //        users: [...state.users, ]  
+  //    });  
+  //    console.log(context.getState());  
+  //}  
 
 
   @Action(CreateUser)
@@ -140,14 +140,14 @@ export class StatoModule {
   }
 
 
-  @Action(CreateUser)  
-  createUserr(context: StateContext<UserStatoModel> , { user }: CreateUser) {  
-      const state = context.getState();  
-      context.patchState({  
-        users: [...state.users, user]  
-      });  
-      console.log(context.getState());  
-  }  
+  //@Action(CreateUser)  
+  //createUserr(context: StateContext<UserStatoModel> , { user }: CreateUser) {  
+  //    const state = context.getState();  
+  //    context.patchState({  
+  //      users: [...state.users, user]  
+  //    });  
+  //    console.log(context.getState());  
+  //}  
 
 
   @Action(UpdateUser)
@@ -156,7 +156,7 @@ export class StatoModule {
     const previousState = getState();
     const state = getState();
     const users = [...state.users];
-    const index = users.findIndex(item => item.id === user.id);
+    const index = users.findIndex(item => item.idUser === user.idUser);
     users[index] = user;
     setState({
       ...state,
@@ -174,27 +174,27 @@ export class StatoModule {
     );
   }
 
-  @Action(UpdateUser)  
-  updateUserr(context: StateContext<UserStatoModel> , { user }: UpdateUser) {  
-      const state = context.getState();  
-      context.patchState({  
-        users: [...state.users, user]  
-      });  
-      console.log(context.getState());  
-  } 
+  //@Action(UpdateUser)  
+  //updateUserr(context: StateContext<UserStatoModel> , { user }: UpdateUser) {  
+  //    const state = context.getState();  
+  //    context.patchState({  
+  //      users: [...state.users, user]  
+  //    });  
+  //    console.log(context.getState());  
+  //} 
 
 
   @Action(DeleteUser)
-  deleteUser( { getState, setState }: StateContext<UserStatoModel>, { id }: DeleteUser ) {
+  deleteUser( { getState, setState }: StateContext<UserStatoModel>, { idUser }: DeleteUser ) {
     // Optimistic update
     const previousState = getState();
     const state = getState();
-    const filteredArray = state.users.filter(h => h.id !== id);
+    const filteredArray = state.users.filter(h => h.idUser !== idUser);
     setState({
       ...state,
       users: filteredArray
     });
-    return this.userProviderService.deleteUser(id).pipe(
+    return this.userProviderService.deleteUser(idUser).pipe(
       catchError((err: HttpErrorResponse) => {
         alert("Something happened. Please try again.");
         setState({
@@ -206,24 +206,24 @@ export class StatoModule {
     );
   }
 
-  @Action(DeleteUser)  
-  deleteUserr(context: StateContext<UserStatoModel> , { id }: DeleteUser) {  
-      const previousState = context.getState(); 
-      const state = context.getState(); 
-      context.patchState({  
-        users: [...previousState.users]  
-      });  
+  //@Action(DeleteUser)  
+  //deleteUserr(context: StateContext<UserStatoModel> , { idUser }: DeleteUser) {  
+  //    const previousState = context.getState(); 
+  //    const state = context.getState(); 
+  //    context.patchState({  
+  //      users: [...previousState.users]  
+  //    });  
       //???
-      console.log(context.getState());  
-  } 
+  //    console.log(context.getState());  
+  //} 
 
   @Action(RemoveUser)  
-  removeUser(  {getState, patchState }: StateContext<UserStatoModel>,  { payload: { id } }: RemoveUser) {  
+  removeUser(  {getState, patchState }: StateContext<UserStatoModel>,  { payload: { idUser } }: RemoveUser) {  
       patchState({  
-        users: getState().users.filter(a => a.id !== id)  
+        users: getState().users.filter(a => a.idUser !== idUser)  
 
       });  
-      console.log(id);  
+      console.log(idUser);  
       console.log(getState());  
   }  
 

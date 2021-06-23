@@ -43,7 +43,7 @@ public class PeopleServiceImpl implements PeopleService{
 	@Override
 	public PeopleDTO findOneById(Integer id){
 		
-		PeopleEntity entity = peopleRepository.findOneById(id);
+		PeopleEntity entity = peopleRepository.findOneByIdPeople(id);
 		PeopleDTO resDTO = peopleMapper.entityToPeopleDTO(entity);
 		return resDTO;
 	};
@@ -51,7 +51,7 @@ public class PeopleServiceImpl implements PeopleService{
 	@Override
 	public PeopleFullNameDTO getPeopleFullNameById(Integer id){
 		
-		PeopleEntity entity = peopleRepository.findOneById(id);
+		PeopleEntity entity = peopleRepository.findOneByIdPeople(id);
 		PeopleFullNameDTO resDTO = peopleMapper.entityToPeopleFullNameDTO(entity);
 		return resDTO;
 	};
@@ -61,16 +61,16 @@ public class PeopleServiceImpl implements PeopleService{
 		
 		PeopleEntity entity = peopleMapper.peopleDTOToPeopleEntity(dto);
 
-		if(!(entity.getId()>0)){
+		if(!(entity.getIdPeople()>0)){
 			List<PeopleEntity> lista = new ArrayList<PeopleEntity>();		
 			lista = peopleRepository.findAll();
 			Integer id = trovaMax(lista) + 1;
-			entity.setId(id);
+			entity.setIdPeople(id);
 		}
 		PeopleEntity res = peopleRepository.save((PeopleEntity)entity);
 		PeopleDTO resDTO = peopleMapper.entityToPeopleDTO(res);
 
-		String message = "sending people saved id:" + res.getId();
+		String message = "sending people saved id:" + res.getIdPeople();
 		jmsTemplate.convertAndSend(firstDestination, message);
 
 
@@ -89,7 +89,7 @@ public class PeopleServiceImpl implements PeopleService{
 		Integer max = 0;
 		try{
 			for(PeopleEntity us:in){
-				Integer id = us.getId();
+				Integer id = us.getIdPeople();
 				if(id > max){
 					max = id;
 				}	

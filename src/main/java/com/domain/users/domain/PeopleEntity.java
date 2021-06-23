@@ -1,5 +1,6 @@
 package com.domain.users.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,7 +14,8 @@ public class PeopleEntity {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;
+	@Column(name="id", nullable=false)
+	private Integer idPeople;
 	
 	private String firstName;
 	
@@ -27,19 +29,19 @@ public class PeopleEntity {
 	}
 
 	
-	public PeopleEntity(Integer id, String firstName, String lastName, Integer age) {
-			this.id = id;		
+	public PeopleEntity(Integer idPeople, String firstName, String lastName, Integer age) {
+			this.idPeople = idPeople;		
 			this.firstName = firstName;
 			this.lastName = lastName;
 			this.age = age;
 	}
 	
 	
-	public Integer getId() {
-		return id;
+	public Integer getIdPeople() {
+		return idPeople;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+	public void setIdPeople(Integer idPeople) {
+		this.idPeople = idPeople;
 	}
 
 	public String getFirstName() {
@@ -67,7 +69,7 @@ public class PeopleEntity {
 
 	@Override
 	public String toString() {
-		return "PeopleEntity [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", age=" + age + "]";
+		return "PeopleEntity [idPeople=" + idPeople + ", firstName=" + firstName + ", lastName=" + lastName + ", age=" + age + "]";
 	}
 
 	

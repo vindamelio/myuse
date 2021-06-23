@@ -1,12 +1,16 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ReactiveFormsModule, FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {FormlyFieldConfig} from '@ngx-formly/core';
+import {FormlyJsonschema} from '@ngx-formly/core/json-schema';
 import { ActivatedRoute, Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { UserProviderService } from '../../services/user-provider.service';
+import { User } from '../../models/user';
+
 import { from, of, Observable } from 'rxjs';
 import { Select, Store } from "@ngxs/store";
 
-import { UserProviderService } from '../../services/user-provider.service';
 import { StatoModule } from '../../modules/stato/stato.module';
-import { User } from '../../models/user';
 
 import { UserStatoModel, BozzaUserStatoModel, BozzaUserStatoModelRequest } from '../../modules/stato/stato-model.module';
 import { GetUsers, GetUser, CreateUser, UpdateUser, DeleteUser } from '../../modules/stato/stato-action.module';
@@ -27,39 +31,45 @@ export class AddEditeComponent implements OnInit {
 
   public stringe: String = "";
 
-  
-  newItemForm: FormGroup;
   isShowNewItemForm: boolean = false;
 
+  myForm = new FormGroup({});
+  myModel = { 
+    eid: 0,
+    eAccount: '',
+    eMail: '' 
   
+  };
+  //myFields: FormlyFieldConfig[] | undefined= [];
+  myFields: FormlyFieldConfig[] = [];
 
   constructor(
-    private store: Store, private fb: FormBuilder,
+    private store: Store,
     private route: ActivatedRoute, 
     private router:Router,
-    private userProviderService:UserProviderService
-  ) { 
-
-    this.newItemForm = this.fb.group({
-      eid:[0],
-      eaccount: ["", Validators.required],
-      email: [""]
-    });
-  }
+    private userProviderService:UserProviderService,
+    private http:HttpClient,
+    private formlyJsonSchema: FormlyJsonschema
+  ) { }
 
   ngOnInit(): void {
-    //localStorage.setItem("importedUsere",JSON.stringify(this.importedUsere));
-    this.stringe = this.importedUsere.id + ":" + this.importedUsere.account + ":" + this.importedUsere.mail ;
-    this.newItemForm.controls.bid.setValue(this.importedUsere.id)
-    this.newItemForm.controls.baccount.setValue(this.importedUsere.account)
-    this.newItemForm.controls.bmail.setValue(this.importedUsere.mail)
+    
+    this.http.get<any>('/assets/jsonSchemi.json').subscribe(jsonSchema=>{
+      const formlyConfig = this.formlyJsonSchema.toFieldConfig(jsonSchema);
+      console.log(formlyConfig);
+      this.myFields=formlyConfig.fieldGroup;
+    });
+
+    localStorage.setItem("importedUsere",JSON.stringify(this.importedUsere));
+    this.stringe = this.importedUsere.idUser + ":" + this.importedUsere.account + ":" + this.importedUsere.mail ;
+    
   }
 
 
   onSubmit() {
-    this.store.dispatch(new CreateUser(this.newItemForm.value));
-    
+    this.store.dispatch(new CreateUser(this.myForm.value)); //??
     this.isShowNewItemForm = !this.isShowNewItemForm;
+    console.log(this.myModel);
   }
 
   showNewItemForm() {
@@ -75,14 +85,8 @@ export class AddEditeComponent implements OnInit {
   }
 
   public sendData5(){
-    
-    //this.formModel.id = this.importedUser.id;
-    //this.userProviderService.createUser(this.importedUsere).subscribe(data => this.sendingUser=data, error => this.error=error);
-    //console.log("sendingUser: id:" + this.sendingUser.id + ", account:" + this.sendingUser.account + ", mail:" + this.sendingUser.mail);
-    
-    //this.store.dispatch(new CreateUser(this.newItemForm.value));
-    this.store.dispatch(new CreateUser(this.importedUsere));
 
+    this.store.dispatch(new CreateUser(this.importedUsere));
     this.isShowNewItemForm = !this.isShowNewItemForm;
     this.router.navigate(["/home"]);
   }
@@ -90,26 +94,28 @@ export class AddEditeComponent implements OnInit {
   
 
   public resetData5(){
-    this.newItemForm.reset();
+    //this.newItemForm.reset();
+    this.myForm.reset();
   }
 
   
 
   public deleteData(){
-    //this.userProviderService.deleteUser(this.importedUsere.id).subscribe(data => this.msg=data, error => this.error=error);
-
-    this.store.dispatch(new DeleteUser(this.importedUsere.id));
+  
+    this.store.dispatch(new DeleteUser(this.importedUsere.idUser));
     this.router.navigate(["/home"]);
   }
 
   public updateValue(){
-
+    this.myModel.eid = this.importedUsere.idUser
+    this.myModel.eAccount = this.importedUsere.account.toString()
+    this.myModel.eMail = this.importedUsere.mail.toString()
   }
 
   public printUser(){
     
-    console.log("importedUser: id:" + this.importedUsere.id + ", account:" + this.importedUsere.account + ", mail:" + this.importedUsere.mail);
-    console.log("sendingUsere: id:" + this.sendingUsere.id + ", account:" + this.sendingUsere.account + ", mail:" + this.sendingUsere.mail);
+    console.log("importedUser: id:" + this.importedUsere.idUser + ", account:" + this.importedUsere.account + ", mail:" + this.importedUsere.mail);
+    console.log("sendingUsere: id:" + this.sendingUsere.idUser + ", account:" + this.sendingUsere.account + ", mail:" + this.sendingUsere.mail);
  
   }
 

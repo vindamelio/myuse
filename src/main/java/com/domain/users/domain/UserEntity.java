@@ -1,5 +1,6 @@
 package com.domain.users.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,9 +12,11 @@ import javax.persistence.Table;
 public class UserEntity {
 
 	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;
+	@Column(name="id", nullable=false)
+	private Integer idUser;
 	
 	private String account;
 	
@@ -25,18 +28,18 @@ public class UserEntity {
 	}
 
 	
-	public UserEntity(Integer id, String account, String mail) {
-			this.id = id;		
+	public UserEntity(Integer idUser, String account, String mail) {
+			this.idUser = idUser;		
 			this.account = account;
 			this.mail = mail;
 	}
 	
 	
-	public Integer getId() {
-		return id;
+	public Integer getIdUser() {
+		return idUser;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+	public void setIdUser(Integer idUser) {
+		this.idUser = idUser;
 	}
 
 	public String getAccount() {
@@ -57,7 +60,7 @@ public class UserEntity {
 
 	@Override
 	public String toString() {
-		return "UserEntity [id=" + id + ", account=" + account + ", mail=" + mail + "]";
+		return "UserEntity [idUser=" + idUser + ", account=" + account + ", mail=" + mail + "]";
 	}
 
 	

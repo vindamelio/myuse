@@ -23,7 +23,7 @@ public class PeopleMapper {
 		}
 		
 		PeopleDTO peopleDTO = new PeopleDTO();
-		peopleDTO.setId(entity.getId());
+		peopleDTO.setIdPeople(entity.getIdPeople());
 		peopleDTO.setFirstName(entity.getFirstName());
 		peopleDTO.setLastName(entity.getLastName());
 		peopleDTO.setAge(entity.getAge());
@@ -38,7 +38,7 @@ public class PeopleMapper {
 		}
 		
 		PeopleEntity peopleEntity = new PeopleEntity();
-		peopleEntity.setId(dto.getId());		
+		peopleEntity.setIdPeople(dto.getIdPeople());		
 		peopleEntity.setFirstName(dto.getFirstName());
 		peopleEntity.setLastName(dto.getLastName());
 		peopleEntity.setAge(dto.getAge());

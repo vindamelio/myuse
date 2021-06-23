@@ -8,6 +8,6 @@ import com.domain.users.domain.UserEntity;
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, Integer>{
 	
-	UserEntity findOneById(Integer id);
+	UserEntity findOneByIdUser(Integer idUser);
 
 }

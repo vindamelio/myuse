@@ -1,5 +1,5 @@
 export class User {
-    public id:number=0;
+    public idUser:number=0;
     public account:String;
     public mail:String;
 

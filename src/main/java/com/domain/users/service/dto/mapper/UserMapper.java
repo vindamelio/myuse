@@ -23,7 +23,7 @@ public class UserMapper {
 		}
 		
 		UserDTO userDTO = new UserDTO();
-		userDTO.setId(entity.getId());
+		userDTO.setIdUser(entity.getIdUser());
 		userDTO.setAccount(entity.getAccount());
 		userDTO.setMail(entity.getMail());
 		
@@ -37,7 +37,7 @@ public class UserMapper {
 		}
 		
 		UserEntity userEntity = new UserEntity();
-		userEntity.setId(dto.getId());		
+		userEntity.setIdUser(dto.getIdUser());		
 		userEntity.setAccount(dto.getAccount());
 		userEntity.setMail(dto.getMail());
 		
